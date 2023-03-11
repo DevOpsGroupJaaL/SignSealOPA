@@ -36,7 +36,7 @@ Metadata:
       PublicCIDRB:
         default: CIDR to use for public subnet B for app environment.
       ServiceName:
-        default: service-signseal-opa
+        default: signseal-service-opa
       DesiredCount:
         default: 1
 Parameters:
@@ -78,7 +78,7 @@ Parameters:
     ConstraintDescription: Must be a valid CIDR range in the form x.x.x.x/24
   ServiceName:
     Type: String
-    Default: helloopa-blog
+    Default: signseal-service-opa
     Description: A human-readable name for the service.
   DesiredCount:
     Type: Number

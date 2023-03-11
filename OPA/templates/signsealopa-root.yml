@@ -45,7 +45,7 @@ Metadata:
 
       # helloopa-service.yml Parameters
       ServiceName:
-        default: "service-signseal-opa"
+        default: "signseal-service-opa"
       DesiredCount:
         default: 1
 
@@ -88,7 +88,7 @@ Parameters:
   ## helloopa-service.yml Parameters
   ServiceName:
     Type: String
-    Default: "helloopa-blog"
+    Default: "signseal-service-opa"
     Description: A human-readable name for the service.
   DesiredCount:
     Type: Number

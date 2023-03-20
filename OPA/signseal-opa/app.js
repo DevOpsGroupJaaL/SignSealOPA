@@ -47,4 +47,34 @@ app.get('/request', async (req, res, next) => {
         return
     }
 });
+
+// HelloOPA Service router for /request endpoint.
+app.post('/policy', async (req, res, next) => {
+    let requestData = req.body
+
+    // Make HTTP Request to Policy Service (OPA) with Request Data
+    let policyServiceURL = 'http://localhost:8181/v1/data/policy_data'
+
+    const policyServiceRequest = async () => {
+        try {
+            const policyResponse = await axios.put(policyServiceURL, requestData);
+            console.log(policyResponse);
+            return (policyResponse)
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    // After evaluation, return Policy Decision to the user.
+    let policyServiceResult = await policyServiceRequest()
+    if (policyServiceResult) {
+        console.log("Ok");
+        res.status(200).send("Upload OK");
+        return
+    }
+    else{
+        res.status(400).send("error"  + policyServiceResult);
+        return
+    }
+});
 module.exports = app;
